@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>KnowyocityApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>KnowyocityApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script type="text/javascript">
+      var map;
+      function initialize() {
 
-<%= yield %>
+        // create a Map options object, with 2 options required for each map: center and zoom.
+        var mapOptions = {
+          center: new google.maps.LatLng( 40.748, -73.986),
+          zoom: 12,
+          disableDefaultUI: true,
+          draggable: false,
+          disableDoubleClickZoom: true,
+          keyboardShortcuts: false
+        };
 
-</body>
+        map = new google.maps.Map( document.getElementById('map-canvas') , mapOptions );
+
+        google.maps.event.addListener( map, 'click', function(event) {
+          console.log( event.latLng );
+          placeMarker(event.latLng);
+        });
+      }
+
+      google.maps.event.addDomListener( window, 'load', initialize);
+
+      function placeMarker( location ) {
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>Know Yo City</h1>
+    
+    <div id="container">
+      <%= yield %>
+    </div>
+    </body>
 </html>
