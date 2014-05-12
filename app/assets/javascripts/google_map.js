@@ -1,4 +1,4 @@
-
+// javascripts/google_maps.js
 
 var map;
 var myPlacesService;
@@ -6,7 +6,7 @@ var myRequest;
 var placeResults;
 var oneSampleDetails;
 
-function initialize() {
+function initialize( neighborhood, placeType ) {
 
   var styleArray = [
     {
@@ -42,7 +42,7 @@ function initialize() {
           
   var clickLatLng;
 
-  google.maps.event.addListener( map, 'click', function(event) {
+  google.maps.event.addListener( map, 'click', function( event ) {
     clickLatLng = event.latLng;
     console.log( clickLatLng.toString() );
     placeMarker( clickLatLng );
@@ -72,7 +72,7 @@ function placeMarker( location ) {
 }
 
 function callback( results, status ) {
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
+  if ( status == google.maps.places.PlacesServiceStatus.OK ) {
     var results = _.sample( results, 10 );
     for (var i = 0; i < results.length; i++) {
       // console.log( "nearbySearch resp #" + i);
@@ -118,5 +118,5 @@ function calculateDistance( lat1, lng1, lat2, lng2 ) {
 };
 
 // Waits for page to load, then runs initialization, so that body can continue to load even if map hasn't loaded yet.
-google.maps.event.addDomListener( window, 'load', initialize);
+// google.maps.event.addDomListener( window, 'load', initialize);
 
