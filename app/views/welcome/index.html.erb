@@ -1,5 +1,42 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<section id="kycapp">
+  
+  <header id="header">
+    <h1>Know Yo City</h1>
+    <!-- form to select city and neighborhood -->
+    <div id="challenge-form">
+      <select name="neighborhood" id="challenge-neighborhood">
+        <option value="east_village" selected>East Village</option>
+        <option value="flatiron_district">Flatiron District</option>
+      </select>
 
-<div id="map-canvas"></div>
+      <select name="place_type" id="challenge-place-type">
+        <option value="bar">Bar</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="night_club">Night Club</option>
+        <option value="cafe">Cafe</option>
+      </select>
+
+      <button id='play-button'>Play!</button>
+      <button id='next-button'>Next</button>
+    </div> <!-- END CHALLENGE-FORM -->
+  </header> <!-- END HEADER -->
+
+  <section id="main">
+    <div id="map-canvas"></div> <!-- aka todo-list -->
+  </section> <!-- END MAIN -->
+
+  <footer id="footer"></footer>
+
+</section> <!-- END KYCAPP -->
+
+<script type="text/template" id="place-template">
+  
+  <div class="view">
+    <h3><%%= name %></h3>
+    <img src="<%%= photo_url %>" alt="">
+  </div>
+  
+</script>
+
+
 

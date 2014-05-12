@@ -16,26 +16,30 @@
 
 html { 
   height: 100%;
-  /*background-color: indianred;*/
 }
 
 body { 
   height: 100%;
   margin: 0; 
   padding: 0;
-  /*background-color: indianred;*/
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
-#container {
+#kycapp {
   height: 100%;
   width: 100%;
-  background-color: indianred;
+  background-color: palegreen;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
 }
 
 #map-canvas { 
   height: 100%; 
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
-  border: 2px solid teal;
+  border: 10px solid indianred;
 }
 

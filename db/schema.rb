@@ -11,9 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140511142535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
+    t.integer  "radius"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "neighborhoods", force: true do |t|
+    t.integer  "city_id"
+    t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
+    t.integer  "radius"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "places", force: true do |t|
+    t.integer  "neighborhood_id"
+    t.string   "name"
+    t.string   "place_type"
+    t.float    "lat"
+    t.float    "lng"
+    t.text     "photo_url"
+    t.text     "reference_id"
+    t.string   "vicinity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
