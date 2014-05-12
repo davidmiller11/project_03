@@ -4,7 +4,7 @@ var app = app || {};
 
 // Place Model
 
-app.Place = Backbone.Model.extend({
+app.PlaceModel = Backbone.Model.extend({
 
   defaults: {
     name: '',

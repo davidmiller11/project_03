@@ -6,36 +6,23 @@ var myRequest;
 var placeResults;
 var oneSampleDetails;
 
-function initialize( neighborhood, placeType ) {
+function initialize( locationCenter, zoomLevel, placeType ) {
 
   var styleArray = [
-    {
-      featureType: 'transit',
-      elementType: 'all',
-      stylers: [
-        { visibility: 'off' }
-      ]
-    },
-    {
-      featureType: 'poi',
-      elementType: 'labels',
-      stylers: [
-        { visibility: 'off' }
-      ]
-    }
+    { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'off' }] },
+    { featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] }
   ];
 
-  // create a Map options object, with 2 options required for each map: center and zoom.
   var mapOptions = {
-    // latitude = y, longitude = x
-    center: new google.maps.LatLng( 40.726, -73.983),
-    zoom: 16,
+    // latitude ~= y, longitude ~= x
+    center: locationCenter, // required
+    zoom: zoomLevel, // required
     styles: styleArray,
     disableDefaultUI: true,
     draggable: false,
     disableDoubleClickZoom: true,
     keyboardShortcuts: false,
-    scrollwheel: false
+    scrollwheel: true
   };
 
   map = new google.maps.Map( document.getElementById('map-canvas') , mapOptions );
@@ -109,12 +96,12 @@ function buildImage( name, url ) {
 
 // Spherical Law of Cosines
 function calculateDistance( lat1, lng1, lat2, lng2 ) {
-  var lat1 = lat1*(Math.PI / 180),
-      lat2 = lat2*(Math.PI / 180), 
-      deltaLng = (lng2-lng1)*(Math.PI / 180), 
+  var lat1 = lat1 * ( Math.PI / 180 ),
+      lat2 = lat2 * ( Math.PI / 180 ), 
+      deltaLng = ( lng2 - lng1 ) * ( Math.PI / 180 ), 
       R = 6371000; // gives d in meters
-  var d = Math.acos( Math.sin(lat1)*Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2) * Math.cos(deltaLng) ) * R;
-  return Math.round(d);
+  var d = Math.acos( Math.sin( lat1 ) * Math.sin( lat2 ) + Math.cos( lat1 ) * Math.cos( lat2 ) * Math.cos( deltaLng ) ) * R;
+  return Math.round( d );
 };
 
 // Waits for page to load, then runs initialization, so that body can continue to load even if map hasn't loaded yet.
