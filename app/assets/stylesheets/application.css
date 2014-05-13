@@ -29,7 +29,7 @@ body {
   height: 100%;
   width: 100%;
   /*background-color: palegreen;*/
-  /*background-image: url('app/assets/images/woven.png');*/
+  /*background-image: url('../images/woven.png');*/
 }
 
 #main {

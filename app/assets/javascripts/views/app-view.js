@@ -7,10 +7,6 @@ AppView = Backbone.View.extend({
 
   el: '#kycapp',
 
-  initialize: function() {
-    // this.counter = 0;
-  },
-
   events: {
     // 'change #challenge-neighborhood': 'setupGame'
     'click #play-button': 'startGame',
@@ -19,10 +15,12 @@ AppView = Backbone.View.extend({
 
   nextPlace: function( event ) {
 
-    $('#place-view').empty();
-    // marker.setMap(null);
+    this.counter += 1;
 
-    var currentPlace = theMap.places.models[ app.counter ];
+    $('#place-view').empty();
+    theMap.clearMarkers();
+
+    var currentPlace = theMap.places.models[ this.counter ];
 
     // var name = currentPlace.get('name');
 
@@ -43,12 +41,11 @@ AppView = Backbone.View.extend({
       $('#place-view').append( name ).append( newImage );
     }
 
-    app.counter += 1;
   },
 
   startGame: function() {
 
-    this.counter = 0;
+    this.counter = -1;
 
     var neighborhood = $('#challenge-neighborhood').val();
     placeType = $('#challenge-place-type').val().split();
@@ -56,7 +53,7 @@ AppView = Backbone.View.extend({
 
     if ( neighborhood === 'east_village' ) {
       locationCenter = new google.maps.LatLng( 40.726, -73.983 );
-      zoomLevel = 16;
+      zoomLevel = 15;
       radius = 640;
     } else { // else case is flatiron_district
       locationCenter = new google.maps.LatLng( 40.741, -73.989 );
