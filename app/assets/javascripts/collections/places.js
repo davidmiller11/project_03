@@ -1,14 +1,18 @@
 // javascripts/collections/places.js
 
-var app = app || {};
+// var app = app || {};
 
 // Place Collection
 
-var Places = Backbone.Collection.extend({
+var PlaceCollection = Backbone.Collection.extend({
 
-  model: app.Place
+  model: PlaceModel,
+
+  showOne: function( id ) {
+    var modelsToRemove = this.filter( function( place ){
+      return place.id != id;
+    });
+    this.remove( modelsToRemove );
+  }
 
 });
-
-// Create global collection of Places
-app.places = new Places();

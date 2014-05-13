@@ -1,14 +1,13 @@
 // javascripts/models/place.js
 
-var app = app || {};
-
 // Place Model
 
-app.PlaceModel = Backbone.Model.extend({
+var PlaceModel = Backbone.Model.extend({
 
-  defaults: {
-    name: '',
-    photo_url: ''
+  initialize: function() {
+    var lat = this.get('geometry').location.k;
+    var lng = this.get('geometry').location.A;
+    this.location = new google.maps.LatLng( lat, lng );
   }
 
 });

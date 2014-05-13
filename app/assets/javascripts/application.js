@@ -22,8 +22,6 @@
 //= require turbolinks
 //= require_tree .
 
-var app = app || {};
-
 $(document).ready(function() {
-  new app.AppView();
+  app = new AppView();
 });

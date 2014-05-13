@@ -28,24 +28,36 @@ body {
 #kycapp {
   height: 100%;
   width: 100%;
-  background-color: palegreen;
+  /*background-color: palegreen;*/
+  /*background-image: url('app/assets/images/woven.png');*/
 }
 
 #main {
   height: 100%;
   width: 100%;
+  /*position: absolute;*/
 }
 
 #map-canvas { 
   /*height: 100%; */
   /*height: 500px;*/
   width: 750px;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   /*border: 10px solid indianred;*/
   background-color: whitesmoke;
+  display: inline-block;
 }
 
 #game-header {
+  text-align: center;
+}
+
+#place-view {
+  /*position: relative;*/
+  display: inline-block;
+}
+
+#place-view h3 {
   text-align: center;
 }
 

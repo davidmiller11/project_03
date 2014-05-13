@@ -6,26 +6,26 @@ var myRequest;
 var placeResults;
 var oneSampleDetails;
 
-function initialize( locationCenter, zoomLevel, placeType ) {
+function loadMap( locationCenter, zoomLevel, placeType ) {
 
-  var styleArray = [
-    { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'off' }] },
-    { featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] }
-  ];
+  // var styleArray = [
+  //   { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'off' }] },
+  //   { featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] }
+  // ];
 
-  var mapOptions = {
-    // latitude ~= y, longitude ~= x
-    center: locationCenter, // required
-    zoom: zoomLevel, // required
-    styles: styleArray,
-    disableDefaultUI: true,
-    draggable: false,
-    disableDoubleClickZoom: true,
-    keyboardShortcuts: false,
-    scrollwheel: true
-  };
+  // var mapOptions = {
+  //   // latitude ~= y, longitude ~= x
+  //   center: locationCenter, // required
+  //   zoom: zoomLevel, // required
+  //   styles: styleArray,
+  //   disableDefaultUI: true,
+  //   draggable: false,
+  //   disableDoubleClickZoom: true,
+  //   keyboardShortcuts: false,
+  //   scrollwheel: false
+  // };
 
-  map = new google.maps.Map( document.getElementById('map-canvas') , mapOptions );
+  // map = new google.maps.Map( document.getElementById('map-canvas') , mapOptions );
           
   var clickLatLng;
 
@@ -40,7 +40,7 @@ function initialize( locationCenter, zoomLevel, placeType ) {
       types: ['restaurant']
     };
 
-    // create new instance of PlacesService class that renders attributions in the specified container.
+    // // create new instance of PlacesService class that renders attributions in the specified container.
     myPlacesService = new google.maps.places.PlacesService( map );
     
     myPlacesService.nearbySearch( myRequest, callback );
