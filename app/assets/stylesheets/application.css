@@ -25,27 +25,37 @@ body {
   font-family: 'Helvetica Neue', sans-serif;
 }
 
+#header {
+  text-align: center;
+}
+
 #kycapp {
   height: 100%;
   width: 100%;
-  /*background-color: palegreen;*/
-  /*background-image: url('../images/woven.png');*/
 }
 
 #main {
   height: 100%;
-  width: 100%;
-  /*position: absolute;*/
+  width: 90%;
+  margin: 0 auto;
+}
+
+#left-pane {
+  float: left;
+  margin-right: 20px;
+  width: 400px;
+}
+
+#right-pane {
+  float: left;
+  display: block;
+  width: 800px;
+  position: relative;
 }
 
 #map-canvas { 
-  /*height: 100%; */
-  /*height: 500px;*/
   width: 750px;
-  /*margin: 0 auto;*/
-  /*border: 10px solid indianred;*/
-  background-color: whitesmoke;
-  display: inline-block;
+  border: 2px solid indianred;
 }
 
 #game-header {
@@ -53,11 +63,58 @@ body {
 }
 
 #place-view {
-  /*position: relative;*/
-  display: inline-block;
+  height: 300px;
+  display: block;
+  margin-bottom: 20px;
+  border: 2px solid indianred;
+  text-align: center;
 }
 
-#place-view h3 {
+#place-view h2 {
   text-align: center;
+}
+
+#place-view > img {
+  margin: 0 auto;
+}
+
+#chart {
+  border: 2px solid indianred;
+  padding-bottom: 20px;
+}
+
+#chart h2 {
+  text-align: center;
+}
+
+#chart div {
+  font: 14px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 2px;
+  color: white;
+  vertical-align: top;
+}
+
+#results-view {
+  display: inline-block;
+  border: 2px solid green;
+  position: absolute;
+  top: 37%;
+  left: 29%;
+  padding: 20px;
+  background-color: rgba( 100, 0, 0, 0.8 );
+  color: whitesmoke;
+}
+
+#next-button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+#nice-guess {
+  margin-bottom: 10px;
 }
 

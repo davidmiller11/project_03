@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require google_map
 //= require_tree ./routers
 //= require_tree ./models
 //= require_tree ./collections
