@@ -14,7 +14,7 @@ AppView = Backbone.View.extend({
   startGame: function( event ) {
     game = new Game();
     game.startGame();
-    console.log( "game initialized and started!" );
+    console.log( "game initialized in appView and started!" );
   }
 
 });

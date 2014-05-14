@@ -22,7 +22,7 @@ manhattan.neighborhoods.create({
   lat: 40.726,
   lng: -73.983,
   radius: 640 # meters,
-  zoom: 16
+  zoom: 15
 });
 
 manhattan.neighborhoods.create({
