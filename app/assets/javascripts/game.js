@@ -6,6 +6,26 @@ function Game() {
 
   this.pointsArray = [];
 
+  this.totalScore = 0;
+
+  this.avgScore = 0;
+
+  this.updateScores = function() {
+
+    if ( this.pointsArray.length === 0 ) {
+      this.totalScore = 0;
+    } else if ( this.pointsArray.length === 1 ) {
+      this.totalScore = this.pointsArray[0];
+      this.avgScore = Math.round( this.totalScore / this.pointsArray.length * 10 ) / 10;
+    } else {
+      this.totalScore = this.pointsArray.reduce( function( a, b) {
+        return a + b;
+      });
+      this.avgScore = Math.round( this.totalScore / this.pointsArray.length * 10 ) / 10;
+    }
+
+  };
+
   this.startGame = function() {
 
     this.counter = -1;
@@ -24,7 +44,7 @@ function Game() {
       radius = 350;
     }
 
-    $('#game-header').find('h2').html( neighborhood );
+    // $('#game-header').find('h2').html( neighborhood );
     $('#map-canvas').css('height','500px');
 
     this.map = new MapModel({ 
@@ -34,11 +54,11 @@ function Game() {
       radius: radius 
     });    
 
-    $( "#chart" ).append( "<h2>Score</h2>" );
+    $( "#chart" ).append( "<div id='left-score'><div class='score-number'>0</div><div class='score-header'>total</div></div><div id='mid-score'>Score</div><div id='right-score'><div class='score-number'>0.0</div><div class='score-header'>avg</div></div>" );
 
     $('#kycapp').on( "click", "#next-button", function( event ) {
       // event.preventDefault();
-      $('#results-view').remove();
+      $('#blank-div').remove();
       game.nextPlace();
     });
 
@@ -69,9 +89,9 @@ function Game() {
     function buildImage( name, url ) {
       var nameObj = $('<h2>').text( name );
       var newImage = $('<img>').attr( 'src', url );
-      $( nameObj ).hide().appendTo('#place-view').fadeIn( "slow", function() {});
-      $(newImage).hide().appendTo('#place-view').fadeIn( "slow", function() {});
-      $('#game-header').find('h2').text('Where is ' + name + '?  Click the map to guess!');
+      $( nameObj ).hide().appendTo('#place-view').fadeIn( 2000, function() {});
+      $(newImage).hide().appendTo('#place-view').fadeIn( 2000, function() {});
+      $('#game-header').find('h2').html('Where is <span>' + name + '</span>?  Click the map to guess!').hide().fadeIn( 2000, function() {});
     }
   };
 
@@ -114,20 +134,31 @@ function Game() {
 
     game.pointsArray.push( score );
 
+    game.updateScores();
 
     window.setTimeout( function() { 
 
-      $('<div>').text( score ).appendTo('#chart').animate( { width:( score * 3 + 5 ) + "px" } );
+      $('<div class="score-bar">').text( score ).appendTo('#chart').animate( { width:( score * 3 + 5 ) + "px" } );
+      $('#left-score').find('.score-number').hide().text( game.totalScore ).fadeIn( 2000, function() {});
+      $('#right-score').find('.score-number').hide().text( game.avgScore ).fadeIn( 2000, function() {});
 
     }, 2000);
 
     this.showResultsView = function( guessDistance ) {
       var scores = game.pointsArray;
       var score = scores[scores.length - 1];
+      var resultsView;
 
-      var resultsView = '<div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="next-button">Next</button></div>';
+      if (game.counter < 9) {
+        resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="next-button">Next</button></div></div>';
+      } else {
+        resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="finish-button">Finished</button></div></div>';
+      }
 
       window.setTimeout( function() {$( resultsView ).hide().appendTo('#right-pane').fadeIn( 2000, function() {})}, 2000);
+
+
     }
+
   };
 }
