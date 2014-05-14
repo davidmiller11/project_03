@@ -6,11 +6,13 @@
     <div id="challenge-form">
       <select name="neighborhood" id="challenge-neighborhood">
         <option value="default" selected>Select a neighborhood</option>
-        <option value="east_village">East Village</option>
-        <option value="flatiron_district">Flatiron District</option>
+        <!-- <option value="east_village">East Village</option>
+        <option value="flatiron_district">Flatiron District</option> -->
+        <%= render @neighborhoods %>
       </select>
 
       <select name="place_type" id="challenge-place-type">
+        <option value="default" selected>Select a place category</option>
         <option value="bar">Bar</option>
         <option value="restaurant">Restaurant</option>
         <option value="night_club">Night Club</option>
@@ -19,12 +21,12 @@
 
       <button id='play-button'>Play!</button>
     </div> <!-- END CHALLENGE-FORM -->
-    <div id='game-header'>
-      <h2></h2>
-    </div>
   </header> <!-- END HEADER -->
 
-  <section id="main">
+  <section id="game-view">
+<!--     <div id="game-header">
+      <h2></h2>
+    </div>
     
     <div id="left-pane">
       <div id="place-view"></div>
@@ -32,9 +34,9 @@
     </div>
     
     <div id="right-pane">
-      <div id="map-canvas"></div> <!-- aka todo-list -->
-    </div>
-  </section> <!-- END MAIN -->
+      <div id="map-canvas"></div> 
+    </div> -->
+  </section> <!-- END GAME-VIEW -->
 
   <footer id="footer"></footer>
 

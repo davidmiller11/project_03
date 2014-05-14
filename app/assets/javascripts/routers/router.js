@@ -5,10 +5,11 @@ var AppRouter = Backbone.Router.extend({
   },
 
   initialize: function() {
-    // this.collection = new NeighborhoodCollection();
-    this.inputView = new InputView({
-      // collection: this.collection;
-    }); 
+    this.neighborhoods = new NeighborhoodCollection();
+    this.appView = new AppView();
+    // this.inputView = new InputView({
+    //   collection: this.neighborhoods
+    // }); 
   },
 
   start: function() {
@@ -17,11 +18,11 @@ var AppRouter = Backbone.Router.extend({
 
   index: function() {
     console.log('index route hit!');
-    // this.collection.fetch({
-    //   success: function() {
-    //     console.log('Fetch successful!');
-    //   }
-    // });
+    this.neighborhoods.fetch({
+      success: function() {
+        console.log('Fetch successful!');
+      }
+    });
   }
 
 });

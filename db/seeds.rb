@@ -18,17 +18,25 @@ manhattan = City.create({
 });
 
 manhattan.neighborhoods.create({
-  name: 'east_village',
+  name: 'East Village',
   lat: 40.726,
   lng: -73.983,
-  radius: 640 # meters,
+  radius: 640, # meters
   zoom: 15
 });
 
 manhattan.neighborhoods.create({
-  name: 'flatiron_district',
+  name: 'Flatiron District',
   lat: 40.741,
   lng: -73.989,
-  radius: 350 # meters,
+  radius: 350, # meters
   zoom: 16
+});
+
+manhattan.neighborhoods.create({
+  name: 'West Village',
+  lat: 40.735,
+  lng: -74.005,
+  radius: 800, # meters
+  zoom: 15
 });

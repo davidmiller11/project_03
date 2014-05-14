@@ -7,14 +7,16 @@ AppView = Backbone.View.extend({
 
   el: '#kycapp',
 
-  events: {
-    'click #play-button': 'startGame'
+  initialize: function() {
+    this.inputView = new InputView({}); 
   },
 
-  startGame: function( event ) {
-    game = new Game();
-    game.startGame();
-    console.log( "game initialized in appView and started!" );
+  events: {
+    'click #play-again-button': 'endGame'
+  },
+
+  endGame: function() {
+    game.endGame();
   }
 
 });

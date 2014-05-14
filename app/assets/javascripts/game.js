@@ -26,25 +26,35 @@ function Game() {
 
   };
 
+  this.endGame = function() {
+    
+    console.log('hello from game.js endGame');
+    $('#chart').empty();
+    $('#game-view').empty();
+
+  }
+
   this.startGame = function() {
 
     this.counter = -1;
+
+    var gameDiv = '<div id="game-header"><h2></h2></div><div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="map-canvas"></div></div>';
+
+    $('#game-view').append( gameDiv );
 
     var neighborhood = $('#challenge-neighborhood').val();
     placeType = $('#challenge-place-type').val().split();
     zoomLevel = 0;
 
-    if ( neighborhood === 'east_village' ) {
-      locationCenter = new google.maps.LatLng( 40.726, -73.983 );
-      zoomLevel = 15;
-      radius = 640;
-    } else { // else case is flatiron_district
-      locationCenter = new google.maps.LatLng( 40.741, -73.989 );
-      zoomLevel = 16;
-      radius = 350;
-    }
+    console.log('neighborhood is: '+neighborhood);
+    console.log( app.neighborhoods );
 
-    // $('#game-header').find('h2').html( neighborhood );
+    var neighborhoodModel = app.neighborhoods.findWhere({name: neighborhood});
+    console.log(neighborhoodModel);
+    locationCenter = neighborhoodModel.center;
+    zoomLevel = neighborhoodModel.get('zoom');
+    radius = neighborhoodModel.get('radius');
+
     $('#map-canvas').css('height','500px');
 
     this.map = new MapModel({ 
@@ -90,8 +100,8 @@ function Game() {
       var nameObj = $('<h2>').text( name );
       var newImage = $('<img>').attr( 'src', url );
       $( nameObj ).hide().appendTo('#place-view').fadeIn( 2000, function() {});
-      $(newImage).hide().appendTo('#place-view').fadeIn( 2000, function() {});
-      $('#game-header').find('h2').html('Where is <span>' + name + '</span>?  Click the map to guess!').hide().fadeIn( 2000, function() {});
+      $( newImage ).hide().appendTo('#place-view').fadeIn( 2000, function() {});
+      $( '#game-header' ).find('h2').html('Where is <span>' + name + '</span>?  Click the map to guess!').hide().fadeIn( 2000, function() {});
     }
   };
 
@@ -152,7 +162,7 @@ function Game() {
       if (game.counter < 9) {
         resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="next-button">Next</button></div></div>';
       } else {
-        resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="finish-button">Finished</button></div></div>';
+        resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="play-again-button">Play again</button></div></div>';
       }
 
       window.setTimeout( function() {$( resultsView ).hide().appendTo('#right-pane').fadeIn( 2000, function() {})}, 2000);
