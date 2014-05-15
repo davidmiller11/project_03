@@ -6,7 +6,7 @@ var MapModel = Backbone.Model.extend({
 
   initialize: function() {
 
-    console.log('new MapModel instantiated');
+    console.log('dude, new MapModel instantiated!');
 
     var styleArray = [
       { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'off' }] },
@@ -38,14 +38,15 @@ var MapModel = Backbone.Model.extend({
 
     myPlacesService.nearbySearch( myRequest, function(results, status) {
         if ( status == google.maps.places.PlacesServiceStatus.OK ) {
-          console.log( "Places Service Success" );
-          // console.log ( _.sample( results, 10 ) );
-          this.places = new PlaceCollection( _.sample( results, 10 ) );
+          console.log( "Places Service Success!" );
 
+          this.filteredResults = _.filter( results, function(placeObj){ return placeObj.photos; });
+
+          this.places = new PlaceCollection( _.sample( this.filteredResults, 10 ) );
           game.nextPlace();
 
         } else {
-          console.log( 'Places Service Failure' );
+          console.log( 'Places Service Failure!' );
         }
     }.bind( this ) );
 
@@ -61,19 +62,9 @@ var MapModel = Backbone.Model.extend({
       // add marker for true location
       window.setTimeout( function() { game.addMarker( trueLocation )}, 1000);
 
-
       var guessDistance = game.calculateDistance( guessLocation.k, guessLocation.A, trueLocation.k, trueLocation.A );
-
       game.appendScoreArray( guessDistance, radius );
-
       game.showResultsView( guessDistance );
-
     });
-
-    // game.nextPlace();
-
   }
-
-
-
 });

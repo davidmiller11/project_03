@@ -45,7 +45,7 @@ function Game() {
       $('#blank-div').remove();
       this.nextPlace();
     }.bind( this ));
-  }.bind( this );
+  };
 
   this.updateScores = function() {
 
@@ -63,12 +63,12 @@ function Game() {
   };
 
   this.endGame = function() {
-    
     $('#chart').empty();
     $('#game-view').empty();
     $('#challenge-form').show();
+    $('#kycapp').off("click", "#next-button");
     this.counter = -1;
-  }.bind( this );;
+  };
 
   this.nextPlace = function() {
     

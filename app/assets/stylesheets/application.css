@@ -57,6 +57,7 @@ body {
 #map-canvas { 
   width: 750px;
   border: 3px solid steelblue;
+  border-radius: 25px;
 }
 
 #game-header {
@@ -73,6 +74,7 @@ body {
   display: block;
   margin-bottom: 20px;
   border: 3px solid steelblue;
+  border-radius: 25px;
   text-align: center;
 }
 
@@ -86,6 +88,7 @@ body {
 
 #chart {
   border: 3px solid steelblue;
+  border-radius: 25px;
   padding-bottom: 20px;
 }
 
@@ -142,13 +145,14 @@ body {
 
 #results-view {
   display: inline-block;
-  border: 3px solid steelblue;
+  border: 3px solid whitesmoke;
   position: absolute;
   top: 37%;
   left: 29%;
   padding: 20px;
   background-color: rgba( 0, 150, 220, 0.4 );
   color: whitesmoke;
+  letter-spacing: 2px;
 }
 
 #results-view.game-over {
@@ -263,7 +267,7 @@ div#play-button:hover {
 }
 
 #navbar li {
-  float: left;
+  float: right;
 }
 
 #navbar li a {
@@ -272,20 +276,26 @@ div#play-button:hover {
   text-decoration: none;
   font-weight: bold;
   color: whitesmoke;
-  border-right: 1px solid whitesmoke;
+  border-left: 1px solid whitesmoke;
   letter-spacing: 2px;
 }
 
-li#logo {
-  float: right;
+#navbar li#logo {
+  float: left;
   font-size: 40px;
+  padding-left: 10px;
 }
 
-li#logo span {
+#navbar li#logo #title-intro {
   font-size: 12px;
   font-style: italic;
 }
 
-li#logo a {
+#navbar li#logo a {
   padding: 0;
+  border-left: none;
+}
+
+span.title-small-letters {
+  font-size: 28px;
 }
