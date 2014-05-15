@@ -9,9 +9,6 @@ var NeighborhoodModel = Backbone.Model.extend({
     var lng = this.get('lng');
 
     this.center = new google.maps.LatLng( lat, lng );
-    // this.name = this.get('name');
-    // this.radius = this.get('radius');
-    // this.zoom = this.get('zoom');
   }
 
 });

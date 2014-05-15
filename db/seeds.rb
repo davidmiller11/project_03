@@ -9,6 +9,10 @@
 Place.delete_all
 Neighborhood.delete_all
 City.delete_all
+PlaceType.delete_all
+NeighborhoodPlaceType.delete_all
+Challenge.delete_all
+User.delete_all
 
 manhattan = City.create({
   name: 'Manhattan',
@@ -40,3 +44,17 @@ manhattan.neighborhoods.create({
   radius: 800, # meters
   zoom: 15
 });
+
+PlaceType.create({name: 'Bar'});
+PlaceType.create({name: 'Restaurant'});
+PlaceType.create({name: 'Night Club'});
+PlaceType.create({name: 'Cafe'});
+
+for i in 0...Neighborhood.all.length do
+  for j in 0...PlaceType.all.length do
+    NeighborhoodPlaceType.create({
+      neighborhood_id: Neighborhood.all[i].id,
+      place_type_id: PlaceType.all[j].id
+      })
+  end
+end

@@ -7,9 +7,6 @@ var AppRouter = Backbone.Router.extend({
   initialize: function() {
     this.neighborhoods = new NeighborhoodCollection();
     this.appView = new AppView();
-    // this.inputView = new InputView({
-    //   collection: this.neighborhoods
-    // }); 
   },
 
   start: function() {

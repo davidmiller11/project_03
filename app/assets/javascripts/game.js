@@ -38,7 +38,7 @@ function Game() {
 
     this.counter = -1;
 
-    var gameDiv = '<div id="game-header"><h2></h2></div><div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="map-canvas"></div></div>';
+    var gameDiv = '<div id="game-header"></div><div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="map-canvas"></div></div>';
 
     $('#game-view').append( gameDiv );
 
@@ -78,14 +78,11 @@ function Game() {
     
     game.counter += 1;
 
+    $('#game-header').empty();
     $('#place-view').empty();
     this.clearMarkers();
 
     var currentPlace = this.map.places.models[ game.counter ];
-
-    // var name = currentPlace.get('name');
-
-    // console.log( currentPlace );
 
     if ( currentPlace.get('photos') ) {
       buildImage( currentPlace.get('name'), currentPlace.get('photos')[0].getUrl({
@@ -99,9 +96,9 @@ function Game() {
     function buildImage( name, url ) {
       var nameObj = $('<h2>').text( name );
       var newImage = $('<img>').attr( 'src', url );
-      $( nameObj ).hide().appendTo('#place-view').fadeIn( 2000, function() {});
-      $( newImage ).hide().appendTo('#place-view').fadeIn( 2000, function() {});
-      $( '#game-header' ).find('h2').html('Where is <span>' + name + '</span>?  Click the map to guess!').hide().fadeIn( 2000, function() {});
+      $( nameObj ).hide().appendTo('#place-view').fadeIn( 1000, function() {});
+      $( newImage ).hide().appendTo('#place-view').fadeIn( 1000, function() {});
+      $( '<h2>' ).hide().appendTo('#game-header').html('Where is <span>' + name + '</span>?  Click the map to guess!').fadeIn( 1000, function() {});
     }
   };
 
