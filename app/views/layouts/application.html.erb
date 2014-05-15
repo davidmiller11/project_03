@@ -2,15 +2,22 @@
 <html>
   <head>
     <title>Know Yo City</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "http://d3js.org/d3.v3.min.js", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "http://d3js.org/d3.v3.min.js" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     
+  <ul id="navbar">
+    <li><a href="#">PLAY</a></li>
+    <li><a href="#">LEADERBOARD</a></li>
+    <li><a href="#">LOGIN</a></li>
+    <li id='logo'><a href="#"><span>how well do you</span> KNOW YO CITY?</a></li>
+  </ul>
+
     <%= yield %>
     
   </body>

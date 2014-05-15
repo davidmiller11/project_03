@@ -9,6 +9,7 @@ AppView = Backbone.View.extend({
 
   initialize: function() {
     this.inputView = new InputView({}); 
+    console.log('new AppView instantiated');
   },
 
   events: {
@@ -17,6 +18,7 @@ AppView = Backbone.View.extend({
 
   endGame: function() {
     game.endGame();
+    game = undefined;
   }
 
 });

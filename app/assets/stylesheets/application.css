@@ -27,8 +27,8 @@ body {
 }
 
 #header {
-  text-align: center;
-}
+/*  text-align: center;
+*/}
 
 #kycapp {
   height: 100%;
@@ -151,10 +151,34 @@ body {
   color: whitesmoke;
 }
 
+#results-view.game-over {
+  background-color: rgba( 205, 20, 20, 0.7);
+  border: 3px solid whitesmoke;
+}
+
 #next-button, #play-again-button {
   margin-top: 20px;
   padding: 10px;
   font-size: 18px;
+}
+
+div#play-again-button {
+  -webkit-appearance: none;
+  padding: 10px;
+  font-size: 16px;
+  background-color: whitesmoke;
+  color: red;
+  width: 110px;
+  font-weight: bold;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+div#play-again-button:hover {
+  cursor: pointer;
 }
 
 #nice-guess {
@@ -171,11 +195,97 @@ body {
   background-color: rgba( 0, 0, 0, 0.5 );
 }
 
-#challenge-neighborhood, #challenge-place-type, #play-button {
+#challenge-neighborhood, #challenge-place-type {
+  -webkit-appearance: none;
+  padding: 10px;
+  font-size: 16px;
+  background-color: rgba(0,0,0,0);
+  color: whitesmoke;
+  width: 250px;
+  border: none;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+div#play-button {
   -webkit-appearance: none;
   padding: 10px;
   font-size: 16px;
   background-color: steelblue;
   color: whitesmoke;
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 5px;
 }
 
+div#play-button:hover {
+  cursor: pointer;
+}
+
+.challenge-select-wrapper {
+  display: inline-block;
+  width: 250px;
+  border: 1px solid whitesmoke;
+  background-color: steelblue;
+  border-radius: 20px;
+  position: relative;
+  z-index: 0;
+}
+
+#challenge-form {
+  margin: 0 auto;
+  width: 508px;
+}
+
+.challenge-arrow {
+  z-index: 1;
+  right: 11px;
+  top: 10px;
+  position: absolute;
+}
+
+.challenge-arrow > i {
+  vertical-align: middle;
+  color: whitesmoke;
+}
+
+#navbar {
+  width: 100%;
+  float: left;
+  margin: 0 0 3em 0;
+  padding: 0;
+  list-style: none;
+  background-color: steelblue;
+}
+
+#navbar li {
+  float: left;
+}
+
+#navbar li a {
+  display: block;
+  padding: 15px 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: whitesmoke;
+  border-right: 1px solid whitesmoke;
+  letter-spacing: 2px;
+}
+
+li#logo {
+  float: right;
+  font-size: 40px;
+}
+
+li#logo span {
+  font-size: 12px;
+  font-style: italic;
+}
+
+li#logo a {
+  padding: 0;
+}

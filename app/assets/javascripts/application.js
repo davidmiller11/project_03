@@ -18,10 +18,19 @@
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
-//= require turbolinks
 //= require_tree .
+
+// var game;
 
 $(document).ready(function() {
   app = new AppRouter();
   app.start();
 });
+
+// $(document).on( "page:load", function() {
+
+//   Backbone.history.stop();
+//   app = new AppRouter();
+//   app.start();
+
+// });

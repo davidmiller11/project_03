@@ -8,6 +8,10 @@ var InputView = Backbone.View.extend({
     'click #play-button': 'startGame'
   },
 
+  initialize: function() {
+    console.log('new InputView instantiated!');
+  },
+
   startGame: function() {
     game = new Game();
     game.startGame();

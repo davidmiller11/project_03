@@ -6,6 +6,8 @@ var MapModel = Backbone.Model.extend({
 
   initialize: function() {
 
+    console.log('new MapModel instantiated');
+
     var styleArray = [
       { featureType: 'transit', elementType: 'all', stylers: [{ visibility: 'off' }] },
       { featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] }

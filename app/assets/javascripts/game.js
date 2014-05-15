@@ -10,29 +10,6 @@ function Game() {
 
   this.avgScore = 0;
 
-  this.updateScores = function() {
-
-    if ( this.pointsArray.length === 0 ) {
-      this.totalScore = 0;
-    } else if ( this.pointsArray.length === 1 ) {
-      this.totalScore = this.pointsArray[0];
-      this.avgScore = Math.round( this.totalScore / this.pointsArray.length * 10 ) / 10;
-    } else {
-      this.totalScore = this.pointsArray.reduce( function( a, b) {
-        return a + b;
-      });
-      this.avgScore = Math.round( this.totalScore / this.pointsArray.length * 10 ) / 10;
-    }
-
-  };
-
-  this.endGame = function() {
-    
-    $('#chart').empty();
-    $('#game-view').empty();
-    $('#challenge-form').show();
-  }
-
   this.startGame = function() {
 
     this.counter = -1;
@@ -66,20 +43,43 @@ function Game() {
     $('#kycapp').on( "click", "#next-button", function( event ) {
       // event.preventDefault();
       $('#blank-div').remove();
-      game.nextPlace();
-    });
+      this.nextPlace();
+    }.bind( this ));
+  }.bind( this );
 
+  this.updateScores = function() {
+
+    if ( this.pointsArray.length === 0 ) {
+      this.totalScore = 0;
+    } else if ( this.pointsArray.length === 1 ) {
+      this.totalScore = this.pointsArray[0];
+      this.avgScore = Math.round( this.totalScore / this.pointsArray.length * 10 ) / 10;
+    } else {
+      this.totalScore = this.pointsArray.reduce( function( a, b) {
+        return a + b;
+      });
+      this.avgScore = Math.round( this.totalScore / this.pointsArray.length * 10 ) / 10;
+    }
   };
+
+  this.endGame = function() {
+    
+    $('#chart').empty();
+    $('#game-view').empty();
+    $('#challenge-form').show();
+    this.counter = -1;
+  }.bind( this );;
 
   this.nextPlace = function() {
     
-    game.counter += 1;
+    this.counter += 1;
+    console.log( "game counter is: " + this.counter );
 
     $('#game-header').empty();
     $('#place-view').empty();
     this.clearMarkers();
 
-    var currentPlace = this.map.places.models[ game.counter ];
+    var currentPlace = this.map.places.models[ this.counter ];
 
     if ( currentPlace.get('photos') ) {
       buildImage( currentPlace.get('name'), currentPlace.get('photos')[0].getUrl({
@@ -95,24 +95,24 @@ function Game() {
       var newImage = $('<img>').attr( 'src', url );
       $( nameObj ).hide().appendTo('#place-view').fadeIn( 1000, function() {});
       $( newImage ).hide().appendTo('#place-view').fadeIn( 1000, function() {});
-      $( '<h2>' ).hide().appendTo('#game-header').html('Where is <span>' + name + '</span>?  Click the map to guess!').fadeIn( 1000, function() {});
+      $( '<h2>' ).hide().appendTo('#game-header').html('Where is <span>' + name + '?</span>  Click the map to guess!').fadeIn( 1000, function() {});
     }
-  };
+  }.bind( this );
 
   this.addMarker = function( location ) {
     var marker = new google.maps.Marker({
-      map: game.map.googleMap,
+      map: this.map.googleMap,
       title: 'My Guess!',
       draggable: false,
       animation: google.maps.Animation.DROP,
       position: location
     });
-    game.markers.push( marker );
+    this.markers.push( marker );
   };
 
   this.clearMarkers = function() {
-    for (var i=0; i<game.markers.length; i++) {
-      game.markers[i].setMap( null );
+    for (var i=0; i<this.markers.length; i++) {
+      this.markers[i].setMap( null );
     }
   };
 
@@ -136,33 +136,32 @@ function Game() {
       score = Math.round( (1 - guessDistance/searchDiameter) * 100 );
     }
 
-    game.pointsArray.push( score );
+    this.pointsArray.push( score );
 
-    game.updateScores();
+    this.updateScores();
 
     window.setTimeout( function() { 
 
       $('<div class="score-bar">').text( score ).appendTo('#chart').animate( { width:( score * 3 + 5 ) + "px" } );
-      $('#left-score').find('.score-number').hide().text( game.totalScore ).fadeIn( 2000, function() {});
-      $('#right-score').find('.score-number').hide().text( game.avgScore ).fadeIn( 2000, function() {});
+      $('#left-score').find('.score-number').hide().text( this.totalScore ).fadeIn( 2000, function() {});
+      $('#right-score').find('.score-number').hide().text( this.avgScore ).fadeIn( 2000, function() {});
 
-    }, 2000);
+    }.bind(this), 2000);
 
     this.showResultsView = function( guessDistance ) {
-      var scores = game.pointsArray;
+      var scores = this.pointsArray;
       var score = scores[scores.length - 1];
       var resultsView;
 
-      if (game.counter < 9) {
+      if (this.counter < 9) {
         resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="next-button">Next</button></div></div>';
       } else {
-        resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="play-again-button">Play again</button></div></div>';
+        resultsView = '<div id="blank-div"><div id="results-view" class="game-over"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><div id="play-again-button">PLAY AGAIN</div></div></div>';
       }
 
       window.setTimeout( function() {$( resultsView ).hide().appendTo('#right-pane').fadeIn( 2000, function() {})}, 2000);
 
 
     }
-
   };
 }

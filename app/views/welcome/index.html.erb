@@ -1,26 +1,32 @@
 <section id="kycapp">
   
   <header id="header">
-    <h1>Know Yo City</h1>
     <!-- form to select city and neighborhood -->
     <div id="challenge-form">
-      <select name="neighborhood" id="challenge-neighborhood">
-        <option value="default" selected>Select a neighborhood</option>
-        <!-- <option value="east_village">East Village</option>
-        <option value="flatiron_district">Flatiron District</option> -->
-        <%= render @neighborhoods %>
-      </select>
 
-      <select name="place_type" id="challenge-place-type">
-        <option value="default" selected>Select a place category<i class="fa fa-chevron-circle-down"></i></option>
-        <!--  <option value="bar">Bar</option>
-        <option value="restaurant">Restaurant</option>
-        <option value="night_club">Night Club</option>
-        <option value="cafe">Cafe</option> -->
-        <%= render @place_types %>
-      </select>
+      <div class="challenge-select-wrapper">
+        <select name="neighborhood" id="challenge-neighborhood">
+          <option value="default" selected>Select a neighborhood</option>
+          <!-- <option value="east_village">East Village</option>
+          <option value="flatiron_district">Flatiron District</option> -->
+          <%= render @neighborhoods %>
+        </select><span class="challenge-arrow"><i class="fa fa-chevron-circle-down fa-lg"></i></span>
+      </div>
 
-      <button id='play-button'>Play!</button>
+      <div class="challenge-select-wrapper">
+        <select name="place_type" id="challenge-place-type">
+          <option value="default" selected>Select a place category</option>
+          <!--  <option value="bar">Bar</option>
+          <option value="restaurant">Restaurant</option>
+          <option value="night_club">Night Club</option>
+          <option value="cafe">Cafe</option> -->
+          <%= render @place_types %>
+        </select><span class="challenge-arrow"><i class="fa fa-chevron-circle-down fa-lg"></i></span>
+      </div>
+
+      <!-- <a href="#play"> -->
+      <div id='play-button'>PLAY</div>
+      <!-- </a> -->
     </div> <!-- END CHALLENGE-FORM -->
   </header> <!-- END HEADER -->
 
