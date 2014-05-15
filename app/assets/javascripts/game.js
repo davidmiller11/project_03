@@ -28,29 +28,26 @@ function Game() {
 
   this.endGame = function() {
     
-    console.log('hello from game.js endGame');
     $('#chart').empty();
     $('#game-view').empty();
-
+    $('#challenge-form').show();
   }
 
   this.startGame = function() {
 
     this.counter = -1;
 
+    $('#challenge-form').hide();
+
     var gameDiv = '<div id="game-header"></div><div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="map-canvas"></div></div>';
 
     $('#game-view').append( gameDiv );
 
     var neighborhood = $('#challenge-neighborhood').val();
-    placeType = $('#challenge-place-type').val().split();
+    placeType = $('#challenge-place-type').val().toLowerCase().replace(' ','_').split();
     zoomLevel = 0;
 
-    console.log('neighborhood is: '+neighborhood);
-    console.log( app.neighborhoods );
-
     var neighborhoodModel = app.neighborhoods.findWhere({name: neighborhood});
-    console.log(neighborhoodModel);
     locationCenter = neighborhoodModel.center;
     zoomLevel = neighborhoodModel.get('zoom');
     radius = neighborhoodModel.get('radius');

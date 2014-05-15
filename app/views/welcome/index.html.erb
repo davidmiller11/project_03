@@ -12,11 +12,12 @@
       </select>
 
       <select name="place_type" id="challenge-place-type">
-        <option value="default" selected>Select a place category</option>
-        <option value="bar">Bar</option>
+        <option value="default" selected>Select a place category<i class="fa fa-chevron-circle-down"></i></option>
+        <!--  <option value="bar">Bar</option>
         <option value="restaurant">Restaurant</option>
         <option value="night_club">Night Club</option>
-        <option value="cafe">Cafe</option>
+        <option value="cafe">Cafe</option> -->
+        <%= render @place_types %>
       </select>
 
       <button id='play-button'>Play!</button>

@@ -56,7 +56,7 @@ body {
 
 #map-canvas { 
   width: 750px;
-  border: 2px solid indianred;
+  border: 3px solid steelblue;
 }
 
 #game-header {
@@ -72,7 +72,7 @@ body {
   height: 300px;
   display: block;
   margin-bottom: 20px;
-  border: 2px solid indianred;
+  border: 3px solid steelblue;
   text-align: center;
 }
 
@@ -85,7 +85,7 @@ body {
 }
 
 #chart {
-  border: 2px solid indianred;
+  border: 3px solid steelblue;
   padding-bottom: 20px;
 }
 
@@ -142,12 +142,12 @@ body {
 
 #results-view {
   display: inline-block;
-  border: 2px solid green;
+  border: 3px solid steelblue;
   position: absolute;
   top: 37%;
   left: 29%;
   padding: 20px;
-  background-color: rgba( 100, 0, 0, 0.4 );
+  background-color: rgba( 0, 150, 220, 0.4 );
   color: whitesmoke;
 }
 
@@ -167,7 +167,15 @@ body {
   left: 0;
   width: 750px;
   height: 500px;
-  /*border: 5px solid purple;*/
+  border: 3px solid steelblue;
   background-color: rgba( 0, 0, 0, 0.5 );
+}
+
+#challenge-neighborhood, #challenge-place-type, #play-button {
+  -webkit-appearance: none;
+  padding: 10px;
+  font-size: 16px;
+  background-color: steelblue;
+  color: whitesmoke;
 }
 
