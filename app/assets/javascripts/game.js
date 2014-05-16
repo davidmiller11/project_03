@@ -11,9 +11,7 @@ function Game() {
   this.avgScore = 0;
 
   this.startGame = function() {
-
     this.counter = -1;
-
     $('#header').hide();
     $('#game-view').show();
 
@@ -43,7 +41,6 @@ function Game() {
     $( "#chart" ).append( "<div id='left-score'><div class='score-header'>total</div><div class='score-number'>0</div></div><div id='mid-score'>Score</div><div id='right-score'><div class='score-header'>avg</div><div class='score-number'>0.0</div></div>" );
 
     $('#kycapp').on( "click", "#next-button", function( event ) {
-      // event.preventDefault();
       $('#blank-div').remove();
       this.nextPlace();
     }.bind( this ));
@@ -61,7 +58,6 @@ function Game() {
   };
 
   this.updateScores = function() {
-
     if ( this.pointsArray.length === 0 ) {
       this.totalScore = 0;
     } else if ( this.pointsArray.length === 1 ) {
@@ -84,7 +80,6 @@ function Game() {
   };
 
   this.nextPlace = function() {
-    
     this.counter += 1;
     console.log( "game counter is: " + this.counter );
     turn = this.counter + 1;
@@ -151,16 +146,13 @@ function Game() {
     }
 
     this.pointsArray.push( score );
-
     this.updateScores();
 
     window.setTimeout( function() { 
-
       $('<div class="score-bar">').text( score ).appendTo('#chart').animate( { width:( score * 3 + 5 ) + "px" } );
       var totalScoreCap = (this.counter + 1) * 100;
       $('#left-score').find('.score-number').hide().html( this.totalScore + "<span class='score-cap'>/"+totalScoreCap+"</span>" ).fadeIn( 2000, function() {});
       $('#right-score').find('.score-number').hide().html( this.avgScore + "<span class='score-cap'>/100</span>" ).fadeIn( 2000, function() {});
-
     }.bind(this), 2000);
 
     this.showResultsView = function( guessDistance ) {
@@ -172,9 +164,7 @@ function Game() {
         resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="next-button">Next</button></div></div>';
       } else {
         resultsView = '<div id="blank-div"><div id="results-view" class="game-over"><div id="nice-guess">Great game!</div><div>You averaged ' + this.avgScore + ' points per location!</div><div>Your total score was ' + this.totalScore + ' points!</div><div id="save-score-box"><div id="name-input-label">Enter name to save your score!</div><input type="text" name="player_name" id="player-name-input"/><div id="save-score-button">SAVE</div></div><div id="play-again-button">PLAY AGAIN</div></div></div>';
-
       }
-
       window.setTimeout( function() {$( resultsView ).hide().appendTo('#right-pane').fadeIn( 2000, function() {})}, 2000);
     }
   };

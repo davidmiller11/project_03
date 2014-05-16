@@ -1,7 +1,7 @@
 var AppRouter = Backbone.Router.extend({
 
   routes: {
-    "":             "index",
+    "":             "index",        
     "leaderboard":  "leaderboard"   // #leaderboard
   },
 
@@ -38,16 +38,6 @@ var AppRouter = Backbone.Router.extend({
         this.leaderboard = new LeaderboardView({ collection: this.challenges });
       }.bind( this )
     });
-
   }
-
-  // play: function() {
-  //   if ( game ) {
-  //     game.endGame();
-  //   }
-  //   game = new Game();
-  //   game.startGame();
-  //   console.log( "DM: game instantiated, game.startGame called!" );
-  // }
 
 });

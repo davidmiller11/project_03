@@ -1,7 +1,5 @@
 // javascripts/collections/places.js
 
-// var app = app || {};
-
 // Place Collection
 
 var PlaceCollection = Backbone.Collection.extend({

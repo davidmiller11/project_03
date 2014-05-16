@@ -20,17 +20,7 @@
 //= require_tree ./views
 //= require_tree .
 
-// var game;
-
 $(document).ready(function() {
   app = new AppRouter();
   app.start();
 });
-
-// $(document).on( "page:load", function() {
-
-//   Backbone.history.stop();
-//   app = new AppRouter();
-//   app.start();
-
-// });
