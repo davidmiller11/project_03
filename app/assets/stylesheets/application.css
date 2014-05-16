@@ -419,3 +419,7 @@ td:nth-child(1), td:nth-child(5) {
 tr:nth-child(odd) {
   background-color: rgba(128, 128, 128, 0.1);
 }
+
+tr.data-row {
+  color: gray;
+}
