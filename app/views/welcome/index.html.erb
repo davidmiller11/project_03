@@ -2,6 +2,7 @@
   
   <header id="header">
     <!-- form to select city and neighborhood -->
+    <div id="landing-page-map"><%= image_tag "landing_page_map.png" %><div id="landing-blank-div">
     <div id="challenge-form">
 
       <div class="challenge-select-wrapper">
@@ -16,10 +17,7 @@
       <div class="challenge-select-wrapper">
         <select name="place_type" id="challenge-place-type">
           <option value="default" selected>Select a place category</option>
-          <!--  <option value="bar">Bar</option>
-          <option value="restaurant">Restaurant</option>
-          <option value="night_club">Night Club</option>
-          <option value="cafe">Cafe</option> -->
+
           <%= render @place_types %>
         </select><span class="challenge-arrow"><i class="fa fa-chevron-circle-down fa-lg"></i></span>
       </div>
@@ -28,21 +26,12 @@
       <div id='play-button'>PLAY</div>
       <!-- </a> -->
     </div> <!-- END CHALLENGE-FORM -->
+    </div>
+    </div>
   </header> <!-- END HEADER -->
 
   <section id="game-view">
-<!--     <div id="game-header">
-      <h2></h2>
-    </div>
-    
-    <div id="left-pane">
-      <div id="place-view"></div>
-      <div id="chart"></div>
-    </div>
-    
-    <div id="right-pane">
-      <div id="map-canvas"></div> 
-    </div> -->
+
   </section> <!-- END GAME-VIEW -->
 
   <footer id="footer"></footer>

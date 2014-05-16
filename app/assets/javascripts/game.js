@@ -14,9 +14,11 @@ function Game() {
 
     this.counter = -1;
 
-    $('#challenge-form').hide();
+    $('#header').hide();
 
-    var gameDiv = '<div id="game-header"></div><div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="map-canvas"></div></div>';
+    var gameDiv = '<div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="game-header"></div><div id="map-canvas"></div></div>';
+
+    // var gameDiv = '<div id="game-header"></div><div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="map-canvas"></div></div>';
 
     $('#game-view').append( gameDiv );
 
@@ -38,7 +40,7 @@ function Game() {
       radius: radius 
     });    
 
-    $( "#chart" ).append( "<div id='left-score'><div class='score-number'>0</div><div class='score-header'>total</div></div><div id='mid-score'>Score</div><div id='right-score'><div class='score-number'>0.0</div><div class='score-header'>avg</div></div>" );
+    $( "#chart" ).append( "<div id='left-score'><div class='score-header'>total</div><div class='score-number'>0</div></div><div id='mid-score'>Score</div><div id='right-score'><div class='score-header'>avg</div><div class='score-number'>0.0</div></div>" );
 
     $('#kycapp').on( "click", "#next-button", function( event ) {
       // event.preventDefault();
@@ -65,7 +67,7 @@ function Game() {
   this.endGame = function() {
     $('#chart').empty();
     $('#game-view').empty();
-    $('#challenge-form').show();
+    $('#header').show();
     $('#kycapp').off("click", "#next-button");
     this.counter = -1;
   };
@@ -74,6 +76,7 @@ function Game() {
     
     this.counter += 1;
     console.log( "game counter is: " + this.counter );
+    turn = this.counter + 1;
 
     $('#game-header').empty();
     $('#place-view').empty();
@@ -95,8 +98,8 @@ function Game() {
       var newImage = $('<img>').attr( 'src', url );
       $( nameObj ).hide().appendTo('#place-view').fadeIn( 1000, function() {});
       $( newImage ).hide().appendTo('#place-view').fadeIn( 1000, function() {});
-      $( '<h2>' ).hide().appendTo('#game-header').html('Where is <span>' + name + '?</span>  Click the map to guess!').fadeIn( 1000, function() {});
-    }
+      $( '<h2>' ).hide().appendTo('#game-header').html('<div id="location-header">Location ' + turn + ' of 10:</div> Where is <span>' + name + '?</span>  <div id="click-map-header">Click the map to guess!</div>').fadeIn( 1000, function() {});
+    };
   }.bind( this );
 
   this.addMarker = function( location ) {
@@ -143,8 +146,9 @@ function Game() {
     window.setTimeout( function() { 
 
       $('<div class="score-bar">').text( score ).appendTo('#chart').animate( { width:( score * 3 + 5 ) + "px" } );
-      $('#left-score').find('.score-number').hide().text( this.totalScore ).fadeIn( 2000, function() {});
-      $('#right-score').find('.score-number').hide().text( this.avgScore ).fadeIn( 2000, function() {});
+      var totalScoreCap = (this.counter + 1) * 100;
+      $('#left-score').find('.score-number').hide().html( this.totalScore + "<span class='score-cap'>/"+totalScoreCap+"</span>" ).fadeIn( 2000, function() {});
+      $('#right-score').find('.score-number').hide().html( this.avgScore + "<span class='score-cap'>/100</span>" ).fadeIn( 2000, function() {});
 
     }.bind(this), 2000);
 
@@ -156,7 +160,7 @@ function Game() {
       if (this.counter < 9) {
         resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="next-button">Next</button></div></div>';
       } else {
-        resultsView = '<div id="blank-div"><div id="results-view" class="game-over"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><div id="play-again-button">PLAY AGAIN</div></div></div>';
+        resultsView = '<div id="blank-div"><div id="results-view" class="game-over"><div id="nice-guess">Great game!</div><div>You averaged ' + this.avgScore + ' points per location!</div><div>Your total score was ' + this.totalScore + ' points!</div><div id="save-score-box"><div id="name-input-label">Enter name to save your score!</div><input type="text" name="player_name" id="player-name-input"/><div id="save-score-button">SAVE</div></div><div id="play-again-button">PLAY AGAIN</div></div></div>';
       }
 
       window.setTimeout( function() {$( resultsView ).hide().appendTo('#right-pane').fadeIn( 2000, function() {})}, 2000);
