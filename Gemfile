@@ -39,3 +39,6 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'pry-rails', group: :development
+
+# for Heroku: to enable STDOUT logging and configure app to serve assets in production
+gem 'rails_12factor', group: :production
