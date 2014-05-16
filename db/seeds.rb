@@ -15,24 +15,45 @@ Challenge.delete_all
 User.delete_all
 
 Challenge.create({
-  player_name: 'DMills',
+  player_name: 'MacGruber',
   hood_name: 'East Village',
   place_type: 'Bar',
-  score_avg: '87.3'
+  score_avg: '11.8'
 });
 
 Challenge.create({
-  player_name: 'pjwl33',
+  player_name: 'Big Daddy',
   hood_name: 'East Village',
   place_type: 'Restaurant',
-  score_avg: '82.9'
+  score_avg: '36.1'
 });
 
 Challenge.create({
-  player_name: 'Shook_Star',
+  player_name: 'The Human PowerTool',
+  hood_name: 'West Village',
+  place_type: 'Night Club',
+  score_avg: '26.8'
+});
+
+Challenge.create({
+  player_name: 'HalfWay Shook',
   hood_name: 'Flatiron District',
   place_type: 'Cafe',
   score_avg: '26.8'
+});
+
+Challenge.create({
+  player_name: 'Larry Fowl',
+  hood_name: 'Flatiron District',
+  place_type: 'Bar',
+  score_avg: '18.6'
+});
+
+Challenge.create({
+  player_name: 'Tony Two Times',
+  hood_name: 'Flatiron District',
+  place_type: 'Cafe',
+  score_avg: '10.4'
 });
 
 manhattan = City.create({

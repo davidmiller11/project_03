@@ -27,7 +27,7 @@ body {
 }
 
 #header {
-  position: relative;
+  /*position: relative;*/
 }
 
 #kycapp {
@@ -143,8 +143,11 @@ body {
   text-align: right;
   padding: 3px;
   margin: 2px;
+  margin-left: 14px;
   color: white;
   vertical-align: top;
+  border-radius: 7px;
+  padding-right: 6px;
 }
 
 #results-view {
@@ -375,4 +378,44 @@ input#player-name-input {
 div#name-input-label {
   margin-top: 30px;
   margin-bottom: 7px;
+}
+
+#leaderboard {
+  display: none;
+}
+
+#save-notice {
+  margin-top: 20px;
+  text-align: center;
+}
+
+table {
+  /*border: 2px solid steelblue;*/
+  border-radius: 20px;
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+table td {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  width: 150px;
+}
+
+tr#header-row {
+  background-color: steelblue;
+  color: whitesmoke;
+}
+
+table th {
+  padding: 12px;
+}
+
+td:nth-child(1), td:nth-child(5) {
+  text-align: center;
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(128, 128, 128, 0.1);
 }

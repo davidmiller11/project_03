@@ -8,8 +8,6 @@
       <div class="challenge-select-wrapper">
         <select name="neighborhood" id="challenge-neighborhood">
           <option value="default" selected>Select a neighborhood</option>
-          <!-- <option value="east_village">East Village</option>
-          <option value="flatiron_district">Flatiron District</option> -->
           <%= render @neighborhoods %>
         </select><span class="challenge-arrow"><i class="fa fa-chevron-circle-down fa-lg"></i></span>
       </div>
@@ -31,8 +29,26 @@
   </header> <!-- END HEADER -->
 
   <section id="game-view">
-
   </section> <!-- END GAME-VIEW -->
+
+  <section id="leaderboard">
+  <table>
+    <tr id="header-row">
+      <th>RANK</th>
+      <th>NAME</th>
+      <th>CATEGORY</th>
+      <th>'HOOD</th>
+      <th>SCORE</th>
+    </tr>
+    <tr id="bottom-row">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </table>
+  </section> <!-- END LEADERBOARD -->
 
   <footer id="footer"></footer>
 

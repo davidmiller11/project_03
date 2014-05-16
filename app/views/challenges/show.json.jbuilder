@@ -1,0 +1,1 @@
+json.extract! @challenge, :id, :player_name, :hood_name, :place_type, :score_avg, :created_at, :updated_at

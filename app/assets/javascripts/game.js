@@ -15,6 +15,7 @@ function Game() {
     this.counter = -1;
 
     $('#header').hide();
+    $('#game-view').show();
 
     var gameDiv = '<div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="game-header"></div><div id="map-canvas"></div></div>';
 
@@ -22,7 +23,7 @@ function Game() {
 
     $('#game-view').append( gameDiv );
 
-    var neighborhood = $('#challenge-neighborhood').val();
+    neighborhood = $('#challenge-neighborhood').val();
     placeType = $('#challenge-place-type').val().toLowerCase().replace(' ','_').split();
     zoomLevel = 0;
 
@@ -47,6 +48,17 @@ function Game() {
       $('#blank-div').remove();
       this.nextPlace();
     }.bind( this ));
+
+    $('#kycapp').on( "click", "#save-score-button", function() {
+      app.challenges.create( {
+        player_name: $('#player-name-input').val(),
+        hood_name: neighborhood,
+        place_type: $('#challenge-place-type').val(),
+        score_avg: this.avgScore
+      }, {wait: true});
+      $('#save-score-box').html('<div id="save-notice">Saved!</div>');
+      console.log('User clicked save!');
+    }.bind(this));
   };
 
   this.updateScores = function() {
@@ -161,11 +173,10 @@ function Game() {
         resultsView = '<div id="blank-div"><div id="results-view"><div id="nice-guess">Nice guess!</div><div>You guessed ' + guessDistance + ' meters away!</div><div>You scored ' + score + ' points!</div><button id="next-button">Next</button></div></div>';
       } else {
         resultsView = '<div id="blank-div"><div id="results-view" class="game-over"><div id="nice-guess">Great game!</div><div>You averaged ' + this.avgScore + ' points per location!</div><div>Your total score was ' + this.totalScore + ' points!</div><div id="save-score-box"><div id="name-input-label">Enter name to save your score!</div><input type="text" name="player_name" id="player-name-input"/><div id="save-score-button">SAVE</div></div><div id="play-again-button">PLAY AGAIN</div></div></div>';
+
       }
 
       window.setTimeout( function() {$( resultsView ).hide().appendTo('#right-pane').fadeIn( 2000, function() {})}, 2000);
-
-
     }
   };
 }
