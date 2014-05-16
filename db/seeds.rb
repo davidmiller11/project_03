@@ -14,6 +14,27 @@ NeighborhoodPlaceType.delete_all
 Challenge.delete_all
 User.delete_all
 
+Challenge.create({
+  player_name: 'DMills',
+  hood_name: 'East Village',
+  place_type: 'Bar',
+  score_avg: '87.3'
+});
+
+Challenge.create({
+  player_name: 'pjwl33',
+  hood_name: 'East Village',
+  place_type: 'Restaurant',
+  score_avg: '82.9'
+});
+
+Challenge.create({
+  player_name: 'Shook_Star',
+  hood_name: 'Flatiron District',
+  place_type: 'Cafe',
+  score_avg: '26.8'
+});
+
 manhattan = City.create({
   name: 'Manhattan',
   lat: 40.741,
