@@ -19,8 +19,7 @@ function Game() {
 
     var gameDiv = '<div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="game-header"></div><div id="map-canvas"></div></div>';
 
-    // var gameDiv = '<div id="game-header"></div><div id="left-pane"><div id="place-view"></div><div id="chart"></div></div><div id="right-pane"><div id="map-canvas"></div></div>';
-
+    $('#game-view').empty();
     $('#game-view').append( gameDiv );
 
     neighborhood = $('#challenge-neighborhood').val();
