@@ -9,7 +9,7 @@ var AppRouter = Backbone.Router.extend({
     this.neighborhoods = new NeighborhoodCollection();
     this.challenges = new ChallengeCollection();
     this.appView = new AppView();
-    console.log('new AppRouter instantiated!')
+    console.log('new AppRouter instantiated!');
   },
 
   start: function() {
@@ -36,7 +36,7 @@ var AppRouter = Backbone.Router.extend({
       success: function() {
         console.log('Challenges fetch successful!');
         this.leaderboard = new LeaderboardView({ collection: this.challenges });
-      }.bind( this )
+      }.bind(this);
     });
   }
 

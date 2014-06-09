@@ -1,53 +1,49 @@
 <section id="kycapp">
-  
   <header id="header">
     <!-- form to select city and neighborhood -->
-    <div id="landing-page-map"><%= image_tag "landing_page_map.png" %><div id="landing-blank-div">
-    <div id="challenge-form">
-
-      <div class="challenge-select-wrapper">
-        <select name="neighborhood" id="challenge-neighborhood">
-          <option value="default" selected>Select a neighborhood</option>
-          <%= render @neighborhoods %>
-        </select><span class="challenge-arrow"><i class="fa fa-chevron-circle-down fa-lg"></i></span>
-      </div>
-
-      <div class="challenge-select-wrapper">
-        <select name="place_type" id="challenge-place-type">
-          <option value="default" selected>Select a place category</option>
-
-          <%= render @place_types %>
-        </select><span class="challenge-arrow"><i class="fa fa-chevron-circle-down fa-lg"></i></span>
-      </div>
-
-      <!-- <a href="#play"> -->
-      <div id='play-button'>PLAY</div>
-      <!-- </a> -->
-    </div> <!-- END CHALLENGE-FORM -->
-    </div>
-    </div>
+    <div id="landing-page-map">
+      <%= image_tag "landing_page_map.png" %>
+      <div id="landing-blank-div">
+        <div id="challenge-form">
+          <div class="challenge-select-wrapper">
+            <select name="neighborhood" id="challenge-neighborhood">
+              <option value="default" selected>Select a neighborhood</option>
+              <%= render @neighborhoods %>
+            </select>
+            <span class="challenge-arrow"><i class="fa fa-chevron-circle-down fa-lg"></i></span>
+          </div> <!-- END CHALLENGE-SELECT-WRAPPER -->
+          <div class="challenge-select-wrapper">
+            <select name="place_type" id="challenge-place-type">
+              <option value="default" selected>Select a place category</option>
+              <%= render @place_types %>
+            </select>
+            <span class="challenge-arrow"><i class="fa fa-chevron-circle-down fa-lg"></i></span>
+          </div> <!-- END CHALLENGE-SELECT-WRAPPER -->
+          <div id='play-button'>PLAY</div>
+        </div> <!-- END CHALLENGE-FORM -->
+      </div> <!-- END LANDING-BLANK-DIV -->
+    </div> <!-- END LANDING-PAGE-MAP -->
   </header> <!-- END HEADER -->
 
-  <section id="game-view">
-  </section> <!-- END GAME-VIEW -->
+  <section id="game-view"></section>
 
   <section id="leaderboard">
-  <table>
-    <tr id="header-row">
-      <th>RANK</th>
-      <th>NAME</th>
-      <th>CATEGORY</th>
-      <th>'HOOD</th>
-      <th>SCORE</th>
-    </tr>
-    <tr id="bottom-row">
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </table>
+    <table>
+      <tr id="header-row">
+        <th>RANK</th>
+        <th>NAME</th>
+        <th>CATEGORY</th>
+        <th>'HOOD</th>
+        <th>SCORE</th>
+      </tr>
+      <tr id="bottom-row">
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </table>
   </section> <!-- END LEADERBOARD -->
 
   <footer id="footer"></footer>
@@ -55,12 +51,10 @@
 </section> <!-- END KYCAPP -->
 
 <script type="text/template" id="place-template">
-  
   <div class="view">
     <h2><%%= name %></h2>
     <img src="<%%= photo_url %>" alt="">
   </div>
-  
 </script>
 
 
