@@ -3,11 +3,8 @@
 function Game() {
 
   this.markers = [];
-
   this.pointsArray = [];
-
   this.totalScore = 0;
-
   this.avgScore = 0;
 
   this.startGame = function() {
