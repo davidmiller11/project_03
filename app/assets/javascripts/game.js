@@ -69,11 +69,15 @@ function Game() {
   };
 
   this.endGame = function() {
+    $('#kycapp').off("click", "#next-button");
+    $('#kycapp').off("click", "#save-score-button");
     $('#chart').empty();
     $('#game-view').empty();
     $('#header').show();
-    $('#kycapp').off("click", "#next-button");
     this.counter = -1;
+    this.pointsArray = [];
+    this.totalScore = 0;
+    this.avgScore = 0;
   };
 
   this.nextPlace = function() {

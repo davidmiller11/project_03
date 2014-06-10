@@ -19,6 +19,10 @@ var AppRouter = Backbone.Router.extend({
 
   index: function() {
     console.log('index route hit!');
+    if (typeof game != 'undefined') {
+      this.appView.endGame(); // ends the previous game if a game was already played
+      console.log('game is defined, so endGame called!');
+    };
     this.neighborhoods.fetch({
       success: function() {
         console.log('Neighborhoods fetch successful!');
@@ -35,8 +39,8 @@ var AppRouter = Backbone.Router.extend({
     this.challenges.fetch({
       success: function() {
         console.log('Challenges fetch successful!');
-        this.leaderboard = new LeaderboardView({ collection: this.challenges });
-      }.bind(this);
+        this.leaderboard = new LeaderboardView({collection: this.challenges});
+      }.bind(this)
     });
   }
 

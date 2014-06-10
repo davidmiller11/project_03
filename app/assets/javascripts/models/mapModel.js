@@ -15,8 +15,8 @@ var MapModel = Backbone.Model.extend({
 
     var mapOptions = {
       // latitude ~= y, longitude ~= x
-      center: locationCenter, // required
-      zoom: zoomLevel, // required
+      center: locationCenter, // required for Google Maps
+      zoom: zoomLevel,        // required for Google Maps
       styles: styleArray,
       disableDefaultUI: true,
       draggable: false,
